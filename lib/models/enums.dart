@@ -9,7 +9,7 @@ enum CoordinateType { wgs84, utm, mgrs, olc }
 extension TimeStandardX on TimeStandard {
   String get prefKey => name;
   static TimeStandard fromName(String? n) =>
-      TimeStandard.values.firstWhere((e) => e.name == n, orElse: () => TimeStandard.utc);
+      TimeStandard.values.firstWhere((e) => e.name == n, orElse: () => TimeStandard.local);
 }
 
 extension MeasurementSystemX on MeasurementSystem {

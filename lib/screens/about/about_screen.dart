@@ -1,49 +1,13 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../constants/app_colors.dart';
 import '../../l10n/app_localizations.dart';
 
-/// About tab: version, license, content, credits, and a delayed donate
-/// snackbar. Ports `AboutFragment`.
-class AboutScreen extends StatefulWidget {
+/// About tab: version, license, content, and credits. Ports `AboutFragment`.
+class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
 
-  @override
-  State<AboutScreen> createState() => _AboutScreenState();
-}
-
-class _AboutScreenState extends State<AboutScreen> {
   static const _version = '1.0.30';
-  Timer? _snackTimer;
-
-  @override
-  void initState() {
-    super.initState();
-    _snackTimer = Timer(const Duration(seconds: 3), () {
-      if (!mounted) return;
-      final l = AppLocalizations.of(context)!;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(l.donateText, style: const TextStyle(color: AppColors.white)),
-          action: SnackBarAction(
-            label: l.visit,
-            textColor: AppColors.blue,
-            onPressed: () => launchUrl(Uri.parse('https://publicntp.org'),
-                mode: LaunchMode.externalApplication),
-          ),
-        ),
-      );
-    });
-  }
-
-  @override
-  void dispose() {
-    _snackTimer?.cancel();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {

@@ -16,7 +16,7 @@ class AppSettings {
     this.interfaceName = 'wlan0',
     this.packetLimit = 0,
     this.autoStart = false,
-    this.timeStandard = TimeStandard.utc,
+    this.timeStandard = TimeStandard.local,
     this.measurement = MeasurementSystem.metric,
     this.coordinateType = CoordinateType.wgs84,
   });
